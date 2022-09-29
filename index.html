@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Összegzés dinamikus jelölőnégyzetekkel</title>
+
+
+    <script>
+
+        function oldalstart()
+        {
+            for (let i = 0; i < 10; i++) {
+                var cb = document.createElement("input");
+                cb.setAttribute("type","checkbox")
+                cb.setAttribute("value",i)
+                cb.setAttribute("name","csekboxok")
+                cb.setAttribute("onclick","szamol()");
+                document.body.appendChild(cb);
+				document.body.append("Értéke:"+i)
+            }
+            let divOsszeg = document.createElement("div");
+            divOsszeg.setAttribute("id","divOsszeg");
+            divOsszeg.innerHTML="0";
+            document.body.appendChild(divOsszeg);
+        }
+
+        function szamol()
+        {
+            let cbTomb = document.getElementsByName("csekboxok");
+            let osszeg = 0;
+            cbTomb.forEach(element => {
+                if (element.checked) osszeg+=element.value*1;                
+            });
+            document.getElementById("divOsszeg").innerHTML=osszeg;
+        }
+
+
+    </script>
+
+</head>
+<body onload="oldalstart()">
+    <!--huhu-->
+</body>
+</html>
